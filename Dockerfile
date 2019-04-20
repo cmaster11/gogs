@@ -3,7 +3,7 @@ FROM golang:alpine AS binarybuilder
 RUN apk --no-cache --no-progress add --virtual build-deps build-base git linux-pam-dev
 WORKDIR /go/src/github.com/gogs/gogs
 COPY . .
-RUN make build TAGS="sqlite cert pam"
+RUN make build TAGS="sqlite cert pam redis"
 
 FROM alpine:latest
 # Install system utils & Gogs runtime dependencies
